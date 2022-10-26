@@ -2,7 +2,7 @@ const express = require("express");
 const routes = require("./routes");
 
 const app = express();
-const port = "1337";
+const port = process.env.PORT || "1337";
 app.set("port", port);
 
 app.use('/', routes);
