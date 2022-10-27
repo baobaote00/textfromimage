@@ -30,4 +30,8 @@ router.post('/uploadfile', (req, res) => {
   })();
 });
 
+router.get('/uploadfile', (req, res) => {
+  res.send("OK")
+});
+
 module.exports = router;
