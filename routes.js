@@ -22,12 +22,12 @@ router.post('/uploadfile', (req, res) => {
       if (err) throw err;
     });
 
-    // const { data: { text } } = await worker.recognize('./image.png');
+    const { data: { text } } = await worker.recognize('./image.png');
     // console.log(text);
     // // const translatedText = await translate(text, { from: 'ja', to: 'en' });
     // console.log(translatedText);
     // res.json({ text: text,  })
-    res.send("text")
+    res.send(text)
   })();
 });
 
