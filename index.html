@@ -79,7 +79,7 @@
           document.querySelector(".loading").classList.toggle("d-none")
           document.querySelector(".content").classList.toggle("d-none")
 
-          axios.post('http://localhost:1337/uploadfile', formData, {
+          axios.post('https://imagefromtext.herokuapp.com/uploadfile', formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }
