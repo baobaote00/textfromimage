@@ -2,8 +2,10 @@ const express = require('express');
 const { createWorker } = require("tesseract.js")
 const router = express.Router();
 const fs = require('fs')
-const { translate } = require('free-translate');
+const translate = require('translate-google-api');
 const worker = createWorker();
+const getJSON = require('get-json');
+const axios = require('axios');
 
 router.get("/", function (req, res) {
   res.send('Hello test!')
@@ -23,11 +25,14 @@ router.post('/uploadfile', (req, res) => {
     });
 
     const { data: { text } } = await worker.recognize('./image.png');
+
     // console.log(text);
-    const translatedText = await translate(text, { from: 'ja', to: 'en' });
-    // console.log(translatedText);
-    // res.json({ text: text,  })
-    res.send(translatedText)
+
+    const translated = await axios.get("https://translate.googleapis.com/translate_a/single?client=gtx&sl=ja&tl=en&dt=t&q=" + text).then((res) => {
+      return res.data[0][0][0]
+    })
+    
+    res.json({ text: text, translatedText: translated })
   })();
 });
 
