@@ -16,19 +16,19 @@ router.get("/", function (req, res) {
 })();
 
 router.post('/uploadfile', (req, res) => {
-  // (async () => {
-  //   await fs.writeFileSync('image.png', req.files.image.data, (err) => {
-  //     // throws an error, you could also catch it here
-  //     if (err) throw err;
-  //   });
+  (async () => {
+    await fs.writeFileSync('image.png', req.files.image.data, (err) => {
+      // throws an error, you could also catch it here
+      if (err) throw err;
+    });
 
-  //   const { data: { text } } = await worker.recognize('./image.png');
-  //   console.log(text);
-  //   // const translatedText = await translate(text, { from: 'ja', to: 'en' });
-  //   console.log(translatedText);
-  //   res.json({ text: text,  })
-  // })();
-  res.send("text")
+    // const { data: { text } } = await worker.recognize('./image.png');
+    // console.log(text);
+    // // const translatedText = await translate(text, { from: 'ja', to: 'en' });
+    // console.log(translatedText);
+    // res.json({ text: text,  })
+    res.send("text")
+  })();
 });
 
 router.get('/uploadfile', (req, res) => {
